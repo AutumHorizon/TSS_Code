@@ -1,6 +1,6 @@
 # Define the file path where the input CSV file is located.
 # The CSV file should contain the details of VMs to resize, including SubscriptionName, ResourceGroupName, VMName, and NewVMSize.
-$csvFilePath = "C:\path\to\your\vm_sizes.csv"
+$csvFilePath = "C:\Users\Naisha\OneDrive\Documents\GitHub\TSS_Code\InputFiles\Resize_VM_Inputfile.csv"
 
 # Import the CSV file into a variable.
 # Import-Csv reads the contents of the CSV file and converts each row into an object with properties corresponding to the column headers.
@@ -35,7 +35,7 @@ foreach ($vm in $vmsToResize) {
             Write-Host "Switching to subscription '$subscriptionName'..." -ForegroundColor Yellow
             # Select-AzSubscription changes the active Azure subscription context to the specified subscription.
             # This ensures that subsequent commands are executed under the correct subscription.
-            Select-AzSubscription -SubscriptionName $subscriptionName
+            Select-AzSubscription -SubscriptionName $subscriptionName | out-null
             Write-Host "Switched to subscription '$subscriptionName'." -ForegroundColor Green
         } else {
             # If the current subscription is already the desired one, inform the user that no switch is needed.
@@ -47,7 +47,7 @@ foreach ($vm in $vmsToResize) {
         Write-Host "Stopping VM '$vmName'..." -ForegroundColor Yellow
         # Stop-AzVM stops the specified virtual machine.
         # -Force bypasses any confirmation prompts, and -NoWait allows the script to proceed without waiting for the stop operation to complete.
-        Stop-AzVM -ResourceGroupName $resourceGroupName -Name $vmName -Force -NoWait
+        Stop-AzVM -ResourceGroupName $resourceGroupName -Name $vmName -Force -NoWait | out-null
 
         # Notify the user that the script is waiting for the VM to stop completely.
         Write-Host "Waiting for VM '$vmName' to stop..."
@@ -90,14 +90,14 @@ foreach ($vm in $vmsToResize) {
         # Apply the updated VM size to the Azure VM configuration.
         # Update-AzVM pushes the new configuration (including the size change) to the Azure VM.
         Write-Host "Updating VM size to '$newVMSize'..." -ForegroundColor Yellow
-        Update-AzVM -ResourceGroupName $resourceGroupName -VM $virtualMachine
+        Update-AzVM -ResourceGroupName $resourceGroupName -VM $virtualMachine | Out-Null
         # Notify the user that the VM resizing operation was successful.
         Write-Host "VM '$vmName' resized successfully to '$newVMSize'." -ForegroundColor Green
 
         # Start the VM after resizing it to bring it back online.
         # This ensures the VM is running with its new configuration.
         Write-Host "Starting VM '$vmName'..." -ForegroundColor Yellow
-        Start-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        Start-AzVM -ResourceGroupName $resourceGroupName -Name $vmName | out-null
         # Inform the user that the VM has been started.
         Write-Host "VM '$vmName' started successfully." -ForegroundColor Green
     }
