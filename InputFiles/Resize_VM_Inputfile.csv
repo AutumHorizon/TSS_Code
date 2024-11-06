@@ -1,7 +1,7 @@
 SubscriptionName,ResourceGroupName,VMName,NewVMSize
-AutumnHorizon,kjx-0-app-rg,kjx1aathap001vm,Standard_B2ms
-AutumnHorizon,kjx-0-app-rg,kjx1aathap002vm,Standard_B2ms
-AutumnHorizon,kjx-0-data-rg,kjx1aathdb001vm,Standard_B2ms
+AutumnHorizon,kjx-0-app-rg,kjx1aathap001vm,Standard_B4ms
+AutumnHorizon,kjx-0-app-rg,kjx1aathap002vm,Standard_B4ms
+AutumnHorizon,kjx-0-data-rg,kjx1aathdb001vm,Standard_B4ms
 AutumnHorizon,kjx-0-data-rg,kjx1aathdb002vm,Standard_B4ms
 AutumnHorizon,kjx-0-web-rg,kjx1aathwb001vm,Standard_B4ms
 AutumnHorizon,kjx-0-web-rg,kjx1aathwb002vm,Standard_B4ms
