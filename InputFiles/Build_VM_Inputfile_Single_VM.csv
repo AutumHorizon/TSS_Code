@@ -1,0 +1,4 @@
+Name,Location,Size,ResourceGroup,publisher,Offer,Sku,sqlmgttype,subnet,UserName,Password,Zone
+kjx1aathap001vm,EastUS2,Standard_B2s,kjx-0-app-rg,MicrosoftWindowsServer,WindowsServer,2016-Datacenter,,/subscriptions/78b9497d-7c12-4b7f-b659-55a496fb0d1f/resourceGroups/kjx-net-rg/providers/Microsoft.Network/virtualNetworks/kjx-0-vnet/subnets/kjx-0-pri-snet,azureuser,P@ssw0rd!,1
+kjx1aathdb001vm,EastUS2,Standard_B2s,kjx-0-data-rg,MicrosoftSQLServer,sql2019-ws2019,sqldev,LightWeight,/subscriptions/78b9497d-7c12-4b7f-b659-55a496fb0d1f/resourceGroups/kjx-net-rg/providers/Microsoft.Network/virtualNetworks/kjx-0-vnet/subnets/kjx-0-pri-snet,azureuser,P@ssw0rd!,1
+kjx1aathwb001vm,EastUS2,Standard_B2s,kjx-0-web-rg,MicrosoftWindowsServer,WindowsServer,2019-Datacenter,,/subscriptions/78b9497d-7c12-4b7f-b659-55a496fb0d1f/resourceGroups/kjx-net-rg/providers/Microsoft.Network/virtualNetworks/kjx-0-vnet/subnets/kjx-0-pub-snet,azureuser,P@ssw0rd!,1
