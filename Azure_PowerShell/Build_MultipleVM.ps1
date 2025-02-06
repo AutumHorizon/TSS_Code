@@ -2,7 +2,7 @@
 
 Connect-AzAccount
 
-$VMdetails = Import-Csv -Path "C:\Azure\Build_VM_Inputfile.csv"
+$VMdetails = Import-Csv -Path "C:\Users\Naisha\OneDrive\Documents\GitHub\TSS_Code\InputFiles\Build_VM_Inputfile_Single_VM.csv"
 
 $VMdetails | ForEach-Object {
 
