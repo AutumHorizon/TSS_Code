@@ -1,13 +1,13 @@
 param (
-    [string]$ResourceGroupName = "kjx-0-app-rg",
-    [string]$VMName = "kjx1aathap001vm",
-    [string]$Mode = "ScaleUp", # Accepts "ScaleUp" or "ScaleDown"
+    [string]$ResourceGroupName = "YourResourceGroup",
+    [string]$VMName = "YourVM",
+    [string]$Mode = "ScaleDown", # Accepts "ScaleUp" or "ScaleDown"
     [string]$LowerSKU = "Standard_B2s", # Lower SKU for off-hours
     [string]$HigherSKU = "Standard_D2ds_v5" # Higher SKU for business hours
 )
 
 # Connect to Azure using Managed Identity
-Connect-AzAccount # -Identity
+Connect-AzAccount -Identity
 
 # Get the current VM state
 $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName
@@ -50,6 +50,6 @@ Update-AzVM -ResourceGroupName $ResourceGroupName -VM $vm | Out-Null
 
 # Start VM after resizing
 Write-Output "Starting VM $VMName..."
-Start-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName
+Start-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName | Out-Null
 
 Write-Output "VM $VMName resized to $TargetSKU successfully."
